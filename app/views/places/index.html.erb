@@ -1,0 +1,32 @@
+<%= form_tag places_path, :method => :get do %>
+<p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search Near", :name => nil %>
+<% end %>
+
+<table>
+  <tr>
+    <th>Address</th>
+    <th>Latitude</th>
+    <th>Longitude</th>
+  </tr>
+  <% for location in @places %>
+  <tr>
+    <td><%= place.address %></td>
+    <td><%= place.latitude %></td>
+    <td><%= place.longitude %></td>
+    <td><%= link_to "Show", place %></td>
+    <td><%= link_to "Edit", edit_place_path(place) %></td>
+    <td><%= link_to "Destroy", place, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+  <% end %>
+</table>
+
+<iframe
+  width="450"
+  height="250"
+  frameborder="0" style="border:0"
+  src="https://www.google.com/maps/embed/v1/search?key=
+  AIzaSyD1MtNApv7pcHAvwX4sMBKClJwuMPz3Sxs
+  &q=pizza+restaurants+in+Boston">
+</iframe>
